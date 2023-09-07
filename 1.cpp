@@ -14,10 +14,8 @@ int* genRandArray(int size, int maxValue){
 
 void print(int* array){
     int count = 0;
-    for(int i=0; i<10; i++){
-        if (array[i] != '\0'){
-            count++;
-        }
+    for(int i=0; array[i] != '\0'; i++){
+        count++;
     }
 
     for(int i=0; i<count; i++){
