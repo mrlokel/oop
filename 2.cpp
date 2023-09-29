@@ -1,10 +1,15 @@
 #include <iostream>
 #include <ctime>
+using namespace std;
 
-int* genRandArray(int size, int maxValue){
-    int* array = new int [size];
-    array[0] = size;
-    for(int i=1; i<size; i++){
+int* genRandArray(int maxValue){
+    int size_array = rand() % 11;
+    while (size_array == 0 || size_array == 1){
+        size_array = rand() % 11;
+    }
+    int* array = new int [size_array];
+    array[0] = size_array;
+    for(int i=1; i<size_array; i++){
         int random_int = rand()%maxValue;
         array[i] = random_int;
     }
@@ -14,22 +19,29 @@ int* genRandArray(int size, int maxValue){
 
 int** genRandMatrix(int size, int maxValue){
     int** array = new int* [size];
-    for(int i=0; i<size; i++){
-        array[i] = genRandArray(size, maxValue);
+    for(int i=0; i<=size; i++){
+        array[i] = genRandArray(maxValue);
     }
-    
+
     return array;
 }
 
-void print(int** array, int size){
-    for(int i=0; i<size; i++){
-        int len_arr = array[0][i];
-        for(int j=0; j<len_arr; j++){
-            std::cout << array[len_arr][i] << '\n';
-        }
+void printArr(int* array){
+    int size = array[0];
+    cout << size-1 << ": ";
+    for(int i=1; i<size; i++){
+        cout << array[i] << ", ";
     }
+
+    cout << '\n';
 }
 
+void print(int** array, int size){
+    cout << size << "\n";
+    for(int i = 0; i<size; i++){
+        printArr(array[i]);
+    }
+}
 
 int main(){
     srand(time(0));
