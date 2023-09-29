@@ -1,6 +1,5 @@
 #include <iostream>
 #include <ctime>
-using namespace std;
 
 int* genRandArray(int maxValue){
     int size_array = rand() % 11;
@@ -19,7 +18,7 @@ int* genRandArray(int maxValue){
 
 int** genRandMatrix(int size, int maxValue){
     int** array = new int* [size];
-    for(int i=0; i<=size; i++){
+    for(int i=0; i<size; i++){
         array[i] = genRandArray(maxValue);
     }
 
@@ -28,16 +27,16 @@ int** genRandMatrix(int size, int maxValue){
 
 void printArr(int* array){
     int size = array[0];
-    cout << size-1 << ": ";
+    std::cout << size-1 << ": ";
     for(int i=1; i<size; i++){
-        cout << array[i] << ", ";
+        std::cout << array[i] << ", ";
     }
 
-    cout << '\n';
+    std::cout << '\n';
 }
 
 void print(int** array, int size){
-    cout << size << "\n";
+    std::cout << size << "\n";
     for(int i = 0; i<size; i++){
         printArr(array[i]);
     }
