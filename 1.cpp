@@ -13,12 +13,10 @@ int* genRandArray(int size, int maxValue){
 }
 
 void print(int* array){
-    int count = 0;
-    for(int i=0; array[i] != '\0'; i++){
-        count++;
-    }
+    int size = array[0];
+    std::cout << size-1 << "\n";
 
-    for(int i=0; i<count; i++){
+    for(int i=1; i<size; i++){
         std::cout << array[i];
         std::cout << "\n";
     }
