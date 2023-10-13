@@ -3,7 +3,8 @@
 
 int* genRandArray(int size){
     int* array = new int [size];
-    for(int i=0; i<size; i++){
+    array[0] = size-1;
+    for(int i=1; i<size; i++){
         int random_int = rand()%100;
         array[i] = random_int;
     }
@@ -15,6 +16,15 @@ int** genRandMatrix(int size){
     int** array = new int* [size];
     for(int i=0; i<size; i++){
         array[i] = genRandArray(size);
+    }
+
+    return array;
+}
+
+int** genRandMatrix_2(int size){
+    int** array = new int* [size];
+    for(int i=0; i<size; i++){
+        array[i] = genRandArray(rand()%15);
     }
 
     return array;
@@ -139,6 +149,7 @@ void MatrixSpiralInCenter(int** arr, int* arr_1, int size) {
 }
 
 
+
 void printMatrix(int** array, int size){
     for(int i = 0; i<size; i++){
         for(int j=0; j<size; j++){
@@ -147,6 +158,16 @@ void printMatrix(int** array, int size){
         std::cout << '\n';
     }
 
+}
+
+void printMatrix2(int** array, int size){
+    for(int i = 0; i<size; i++){
+        int size_2 = array[i][0];
+        for(int j=0; j<size_2; j++){
+            std::cout << array[i][j] << ", ";
+        }
+        std::cout << '\n';
+    }
 }
 
 int main(){
@@ -208,6 +229,23 @@ int main(){
     }
     delete[] arr;
     delete[] arr_2;
+    delete[] arr_elements_right_left;
+
+    std::cout << '\n';
+    std::cout << "Вывод подстрочно строк массива";
+    std::cout << '\n' << '\n';
+    int** arr_one = genRandMatrix_2(size_matrix);
+    printMatrix2(arr, size_matrix);
+    std::cout << '\n';
+    for(int i=0; i<5; i++){
+        printArr(arr_one[i], arr_one[i][0]);
+        std::cout << '\n';
+    }
+
+    for(int i=0; i<size_matrix; i++){
+        delete[] arr_one[i];
+    }
+    delete[] arr_one;
 
     return 0;
 }
